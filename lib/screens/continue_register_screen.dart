@@ -63,33 +63,7 @@ class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _headerImage == null
-                      ? Container(
-                          margin: EdgeInsets.only(bottom: 30),
-                          height: 150,
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(16),
-                            color: Color.fromRGBO(198, 203, 217, 1),
-                          ),
-                          child: Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                color: Color.fromRGBO(128, 128, 134, 1),
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                            ),
-                          ),
-                        )
-                      : Image.file(
-                          _avatarImage!,
-                          height: 150,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
+                  CustomRegisterImages(avatarImage: _avatarImage),
                   Row(
                     children: [
                       Expanded(
@@ -120,8 +94,8 @@ class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
                   SizedBox(height: 30),
                   CustomButton(
                     buttonText: "Register",
-                    onTap: () =>
-                        registerButtonTapped(context, args[0], args[1]),
+                    onTap: () => registerButtonTapped(
+                        context, args[0], args[1], _loginController.text),
                   ),
                 ],
               ),
@@ -133,7 +107,8 @@ class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
   }
 
   void registerButtonTapped(
-      BuildContext context, String email, String password) {
-    BlocProvider.of<AuthBloc>(context).add(AuthSignUpEvent(email, password));
+      BuildContext context, String email, String password, String login) {
+    BlocProvider.of<AuthBloc>(context)
+        .add(AuthSignUpEvent(email, password, login));
   }
 }
