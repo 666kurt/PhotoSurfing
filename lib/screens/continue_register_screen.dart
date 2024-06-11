@@ -15,30 +15,6 @@ class ContinueRegisterScreen extends StatefulWidget {
 class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
   final TextEditingController _loginController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
-  File? _avatarImage;
-  File? _headerImage;
-
-  final ImagePicker _picker = ImagePicker();
-
-  Future<void> _pickAvatarImage(BuildContext context) async {
-    final pickedImage = await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      setState(() {
-        _avatarImage = File(pickedImage.path);
-      });
-      BlocProvider.of<AuthBloc>(context).add(AuthAvatarEvent(pickedImage.path));
-    }
-  }
-
-  Future<void> _pickHeaderImage(BuildContext context) async {
-    final pickedImage = await _picker.pickImage(source: ImageSource.gallery);
-    if (pickedImage != null) {
-      setState(() {
-        _headerImage = File(pickedImage.path);
-      });
-      BlocProvider.of<AuthBloc>(context).add(AuthHeaderEvent(pickedImage.path));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,20 +39,19 @@ class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CustomRegisterImages(avatarImage: _avatarImage),
                   Row(
                     children: [
                       Expanded(
                         child: CustomButton(
                           buttonText: "Add avatar",
-                          onTap: () => _pickAvatarImage(context),
+                          onTap: () {},
                         ),
                       ),
                       SizedBox(width: 10),
                       Expanded(
                         child: CustomButton(
                           buttonText: "Add header",
-                          onTap: () => _pickHeaderImage(context),
+                          onTap: () {},
                         ),
                       ),
                     ],
@@ -94,8 +69,7 @@ class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
                   SizedBox(height: 30),
                   CustomButton(
                     buttonText: "Register",
-                    onTap: () => registerButtonTapped(
-                        context, args[0], args[1], _loginController.text),
+                    onTap: () {},
                   ),
                 ],
               ),
@@ -104,11 +78,5 @@ class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
         },
       ),
     );
-  }
-
-  void registerButtonTapped(
-      BuildContext context, String email, String password, String login) {
-    BlocProvider.of<AuthBloc>(context)
-        .add(AuthSignUpEvent(email, password, login));
   }
 }

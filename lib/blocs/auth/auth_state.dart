@@ -26,17 +26,3 @@ class AuthErrorState extends AuthState {
 
 // Состояние, когда пользователь не аутентифицирован
 class AuthUnauthenticatedState extends AuthState {}
-
-// Состояние при добавлении аватара
-class AuthAvatarState extends AuthState {
-  final String avatarPath;
-
-  AuthAvatarState(this.avatarPath);
-}
-
-// Состояние при добавлении хедера
-class AuthHeaderState extends AuthState {
-  final String headerPath;
-
-  AuthHeaderState(this.headerPath);
-}

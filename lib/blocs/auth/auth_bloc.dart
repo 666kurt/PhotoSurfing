@@ -39,15 +39,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthErrorState(e.toString()));
       }
     });
-
-    // Обработчик события добавления аватара
-    on<AuthAvatarEvent>((event, emit) {
-      emit(AuthAvatarState(event.avatarPath));
-    });
-
-    // Обработчик события добавления хедера
-    on<AuthHeaderEvent>((event, emit) {
-      emit(AuthHeaderState(event.headerPath));
-    });
   }
 }
