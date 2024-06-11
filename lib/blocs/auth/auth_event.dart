@@ -23,3 +23,17 @@ class AuthSignUpEvent extends AuthEvent {
 
 // Событие выхода
 class AuthSignOutEvent extends AuthEvent {}
+
+// Событие добавления аватара
+class AuthAvatarEvent extends AuthEvent {
+  final String avatarPath;
+
+  AuthAvatarEvent(this.avatarPath);
+}
+
+// Событие добавления хедера
+class AuthHeaderEvent extends AuthEvent {
+  final String headerPath;
+
+  AuthHeaderEvent(this.headerPath);
+}
