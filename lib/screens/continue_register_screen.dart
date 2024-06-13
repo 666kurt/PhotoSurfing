@@ -27,7 +27,6 @@ class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
       setState(() {
         _avatarImage = File(pickedFile.path);
       });
-      // BlocProvider.of<AuthBloc>(context).add(AuthAvatarEvent(pickedFile.path));
     }
   }
 
@@ -38,7 +37,6 @@ class _ContinueRegisterScreenState extends State<ContinueRegisterScreen> {
       setState(() {
         _headerImage = File(pickedFile.path);
       });
-      // BlocProvider.of<AuthBloc>(context).add(AuthHeaderEvent(pickedFile.path));
     }
   }
 
