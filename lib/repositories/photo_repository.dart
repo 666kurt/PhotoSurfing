@@ -1,11 +1,10 @@
 import 'package:dio/dio.dart';
 import '../models/models.dart';
 
-class PhotoRepository {
-  final Dio dio;
-  final String apiUrl;
-
-  PhotoRepository({required this.dio, required this.apiUrl});
+final class PhotoRepository {
+  final Dio dio = Dio();
+  final String apiUrl =
+      "https://api.unsplash.com/photos/?client_id=swKGHFpF-pFLnTUjXHUt55iWIkniEF7qUbPlEDclRns";
 
   Future<List<Photo>> fetchPhoto() async {
     try {

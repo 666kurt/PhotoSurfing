@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:photo_surfing/blocs/photo/photo_event.dart';
 import '../blocs/auth/auth_bloc.dart';
+import '../blocs/photo/photo_bloc.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'routes.dart';
@@ -16,8 +18,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AuthBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AuthBloc()),
+        BlocProvider(create: (context) => PhotoBloc()..add(FetchPhotoEvent())),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: '/login_screen',

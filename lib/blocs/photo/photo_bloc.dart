@@ -4,13 +4,13 @@ import 'photo_state.dart';
 import 'photo_event.dart';
 
 class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
-  final PhotoRepository photoRepository;
+  final PhotoRepository _photoRepository = PhotoRepository();
 
-  PhotoBloc(this.photoRepository) : super(PhotoInitialState()) {
+  PhotoBloc() : super(PhotoInitialState()) {
     on<FetchPhotoEvent>((event, emit) async {
       try {
         emit(PhotoLoadingState());
-        final photos = await photoRepository.fetchPhoto();
+        final photos = await _photoRepository.fetchPhoto();
         emit(PhotoLoadedState(photos));
       } catch (e) {
         emit(PhotoErrorState(e.toString()));

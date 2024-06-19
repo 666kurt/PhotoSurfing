@@ -5,4 +5,5 @@ final routes = {
   '/register_screen': (context) => RegisterScreen(),
   '/photo_feed_screen': (context) => PhotoFeedScreen(),
   '/continue_register_screen': (context) => ContinueRegisterScreen(),
+  '/detail_photo_screen': (context) => DetailPhotoScreen(),
 };
