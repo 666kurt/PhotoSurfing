@@ -6,4 +6,5 @@ final routes = {
   '/photo_feed_screen': (context) => PhotoFeedScreen(),
   '/continue_register_screen': (context) => ContinueRegisterScreen(),
   '/detail_photo_screen': (context) => DetailPhotoScreen(),
+  '/main_screen': (context) => MainScreen(),
 };
